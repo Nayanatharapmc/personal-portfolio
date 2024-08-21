@@ -1,21 +1,21 @@
 import "./NavbarStyles.css";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa"; //import hamburger icon, fa is the category name
-import  React,{useState} from 'react';
+import React, { useState } from 'react';
 
 const Navbar = () => {
-  const [click, setClick] = React.useState(false);
+  const [click, setClick] = useState(false); // Use useState directly
   const handleClick = () => setClick(!click);
 
-  const [color, setColor] = React.useState(false);
+  const [color, setColor] = useState(false); // Use useState directly
   const changeColor = () => {
-    if(window.scrollY >= 100){
+    if (window.scrollY >= 100) {
       setColor(true);
     } else {
       setColor(false);
     }
   }
-  window.addEventListener('scroll', changeColor); //Trigger event changeColor when scrolling
+  window.addEventListener('scroll', changeColor); // Trigger event changeColor when scrolling
 
   return (
     <div className={color ? "header header-bg" : "header"}>
@@ -24,25 +24,24 @@ const Navbar = () => {
       </Link>
       <ul className={click ? "nav-menu active" : "nav-menu"}>
         <li>
-            <Link to="/home">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li>
-            <Link to="/about">About</Link>
+          <Link to="/about">About</Link>
         </li>
         <li>
-            <Link to="/projects">Projects</Link>
+          <Link to="/projects">Projects</Link>
         </li>
         <li>
-            <Link to="/contact">Contact</Link>
+          <Link to="/contact">Contact</Link>
         </li>
       </ul>
-      <div className="hamburger" onClick={handleClick}> 
-        {click ? (<FaTimes size={20} style={{color:"#fff"}} />):
-        (<FaBars size={20} style={{color:"#fff"}} />)}
+      <div className="hamburger" onClick={handleClick}>
+        {click ? (<FaTimes size={20} style={{ color: "#fff" }} />) :
+          (<FaBars size={20} style={{ color: "#fff" }} />)}
       </div>
     </div>
   )
 }
 
-export default Navbar
-
+export default Navbar;
